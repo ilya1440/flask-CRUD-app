@@ -25,12 +25,12 @@ pip install -r requirements.txt
 
 ### Run the Server
 
-From within the `./backend/application` directory first ensure you are working using your created virtual environment.
+From within the `./backend` directory first ensure you are working using your created virtual environment.
 
 To run the server, execute:
 
 ```bash
-flask run --reload
+flask python run.py
 ```
 
 The `--reload` flag will detect file changes and restart the server automatically.
@@ -38,7 +38,7 @@ The `--reload` flag will detect file changes and restart the server automaticall
 ## API Reference
 
 ### Getting Started
-- Base URL: The backend app can be run locally with the default URL `http://127.0.0.1:5000/`. 
+- Base URL: Render live URL `https://capstone-deployment.onrender.com/` The backend app can be run locally with the default URL `http://127.0.0.1:5000/`. 
 - Authentication: The authentication system used for this project is Auth0. The Auth0 JWT includes claims for permissions based on the user's role within the Auth0 system. To test endpoints under particular role one should authorize with provided email and password or use provided JWT token. There are following three roles:
   - Casting Assistant
      - can `get:actors`

@@ -3,8 +3,8 @@ import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
 
-from .application.app import create_app
-from .application.database.models import setup_db, Movie, Actor
+from application.app import create_app
+from application.database.models import setup_db, Movie, Actor
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -136,7 +136,7 @@ class FinalProjectTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data["success"], True)
-        self.assertTrue(data["movie"])
+        self.assertTrue(data["created"])
 
     def test_create_movie_not_auth(self):
         headers = {"authorization": "{}".format(os.environ.get('DIRECTOR_TOKEN'))}
@@ -154,7 +154,7 @@ class FinalProjectTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data["success"], True)
-        self.assertTrue(data["movie"])
+        self.assertTrue(data["modified"])
 
     def test_invalid_new_movie(self):
         headers = {"authorization": "{}".format(os.environ.get('PRODUCER_TOKEN'))}
@@ -179,7 +179,7 @@ class FinalProjectTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data["success"], True)
-        self.assertTrue(data["actor"])
+        self.assertTrue(data["created"])
 
     def test_modify_actor(self):
         headers = {"authorization": "{}".format(os.environ.get('PRODUCER_TOKEN'))}
@@ -188,7 +188,7 @@ class FinalProjectTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data["success"], True)
-        self.assertTrue(data["actor"])
+        self.assertTrue(data["modified"])
 
     def test_invalid_new_actor(self):
         headers = {"authorization": "{}".format(os.environ.get('PRODUCER_TOKEN'))}

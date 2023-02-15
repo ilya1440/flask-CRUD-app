@@ -78,7 +78,7 @@ def create_app(test_config=None):
                 abort(422)
 
     @app.route('/actors', methods=['POST'])
-    @requires_auth('get:actor')
+    @requires_auth('create:actor')
     def create_actor():
         try:
             body = request.get_json()
