@@ -8,7 +8,11 @@ load_dotenv()
 database_name = os.environ.get('DATABASE_NAME')
 user_name = os.environ.get('USER_NAME')
 password = os.environ.get('PASSWORD')
-database_path = 'postgresql://{}:{}@{}/{}'.format(user_name, password, 'localhost:5432', database_name)
+
+if os.environ.get('EXCITED'):
+    database_path = os.environ.get('DATABASE_URL')
+else:
+    database_path = 'postgresql://{}:{}@{}/{}'.format(user_name, password, 'localhost:5432', database_name)
 
 db = SQLAlchemy()
 
