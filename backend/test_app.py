@@ -3,8 +3,8 @@ import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
 
-from application.app import create_app
-from database.models import setup_db, Movie, Actor, db
+from .application.app import create_app
+from .application.database.models import setup_db, Movie, Actor
 from dotenv import load_dotenv
 load_dotenv()
 

@@ -1,19 +1,12 @@
-from flask import Flask, request, jsonify, abort
-from sqlalchemy import exc
+from flask import request, jsonify, abort
 from flask_cors import CORS
 from werkzeug.exceptions import HTTPException
 from dateutil.parser import parse
 
-from backend.database.models import db_drop_and_create_all, setup_db, Movie, Actor
-from backend.auth.auth import AuthError, requires_auth
+from .database.models import db_drop_and_create_all, setup_db, Movie, Actor
+from .auth.auth import AuthError, requires_auth
 
-import json
-from os import environ as env
-from urllib.parse import quote_plus, urlencode
-
-from authlib.integrations.flask_client import OAuth
-from dotenv import find_dotenv, load_dotenv
-from flask import Flask, redirect, render_template, session, url_for
+from flask import Flask
 
 
 def create_app(test_config=None):
